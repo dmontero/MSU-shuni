@@ -5,7 +5,7 @@ import createSession from "./createSession";
 import { RemoteUserType } from "./types/RemoteUserType";
 
 const remoteLogin = async (code: string) => {
-  const tokenResponse = await fetch(process.env.SSO_TOKEN_URL!, {
+  const tokenResponse = await fetch("https://sherpa.msu.edu.uy/auth/token", {
     method: "POST",
     headers: {
       "Content-Type": "application/x-www-form-urlencoded",
@@ -23,7 +23,7 @@ const remoteLogin = async (code: string) => {
 
   const { access_token }: { access_token: string } = await tokenResponse.json();
 
-  const userResponse = await fetch(process.env.SSO_USER_URL!, {
+  const userResponse = await fetch("https://sherpa.msu.edu.uy/auth/user", {
     headers: {
       Authorization: `Bearer ${access_token}`,
     },

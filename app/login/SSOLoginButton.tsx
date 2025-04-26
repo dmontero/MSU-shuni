@@ -7,7 +7,7 @@ const SSOLoginButton = () => {
 
   const forward = searchParams.get("forward") || "/";
 
-  const loginUrl = new URL(process.env.NEXT_PUBLIC_SSO_AUTHORIZE_URL!);
+  const loginUrl = new URL("https://sherpa.msu.edu.uy/auth/authorize");
   loginUrl.searchParams.append(
     "client_id",
     process.env.NEXT_PUBLIC_SSO_CLIENT_ID!
